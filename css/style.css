@@ -1,0 +1,194 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  background-color: #111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  position: relative;
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: 2s ease-in-out infinite alternate;
+}
+
+.circle:first-of-type {
+  width: 180px;
+  height: 180px;
+  background-image: linear-gradient(#e524c3, #8626b2);
+  top: -60px;
+  left: -60px;
+  animation-name: up;
+}
+
+@keyframes up {
+  to {
+    translate: 0 -10px;
+  }
+}
+
+.circle:nth-of-type(2) {
+  width: 120px;
+  height: 120px;
+  background-image: linear-gradient(#d64612, #e48307);
+  bottom: -20px;
+  right: -20px;
+  animation-name: down;
+}
+
+@keyframes down {
+  to {
+    translate: 0 10px;
+  }
+}
+
+.clock {
+  width: 350px;
+  height: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  backdrop-filter: blur(15px);
+  background-color: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+img {
+  position: absolute;
+  display: block;
+  width: 100%;
+  object-fit: cover;
+  z-index: 1000;
+}
+
+.clock::before {
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: white;
+  z-index: 1000;
+}
+
+.hr,
+.min,
+.sec {
+  display: block;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.hr {
+  width: 160px;
+  height: 160px;
+}
+
+.min {
+  width: 190px;
+  height: 190px;
+}
+
+.sec {
+  width: 230px;
+  height: 230px;
+}
+
+.hr::before {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 80px;
+  background-color: #ff3d68;
+  border-radius: 10px;
+}
+
+.min::before {
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 90px;
+  background-color: #39a2db;
+  border-radius: 8px;
+}
+
+.sec::before {
+  content: '';
+  position: absolute;
+  width: 3px;
+  height: 150px;
+  background-color: #fff;
+  border-radius: 2px;
+}
+
+@media screen and (max-width: 776px) {
+  .clock {
+    width: 250px;
+    height: 250px;
+  }
+
+  .circle:first-of-type {
+    width: 120px;
+    height: 120px;
+    top: -40px;
+    left: -40px;
+  }
+
+  .circle:nth-of-type(2) {
+    width: 80px;
+    height: 80px;
+    bottom: -10px;
+    right: -10px;
+  }
+
+  .hr {
+    width: 140px;
+    height: 140px;
+  }
+
+  .min {
+    width: 170px;
+    height: 170px;
+  }
+
+  .sec {
+    width: 210px;
+    height: 210px;
+  }
+
+  .hr::before {
+    width: 6px;
+    height: 60px;
+    top: 10px;
+  }
+
+  .min::before {
+    width: 4px;
+    height: 80px;
+    top: 10px;
+  }
+
+  .sec::before {
+    width: 2px;
+    height: 110px;
+    top: 20px;
+  }
+}
